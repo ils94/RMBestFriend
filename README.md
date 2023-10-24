@@ -28,6 +28,8 @@ Now go to the Menu in the top left of RMBF overlay and configure your setup
 
 ![enter image description here](https://github.com/ils94/RMBestFriend/blob/master/tutorial/tutorial4.PNG?raw=true)
 
+After you setup everything, you can minimize the overlay and close the Keys Setup window. Do not close the overlay! It needs to be open, just minimize it and let it go.
+
 # Notes
 
 Go to a mob and hit it enough to leave it at low health, then keep dragging the rectangle where it's HP bar is until the program detects the enemy HP bar. It not hard to setup, make the rectangle a bit bigger to give the program enough coordinates to perform the pixel recognition.
