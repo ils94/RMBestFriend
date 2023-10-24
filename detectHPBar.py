@@ -6,8 +6,6 @@ import globalVariables
 
 
 def is_hp_low():
-    create_images_directory()
-
     image_files = []
 
     # Specify the external directory path
@@ -42,10 +40,4 @@ def is_hp_low():
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
 
         if max_val > 0.7:
-            print(image_files)
             return True
-
-
-def create_images_directory():
-    if not os.path.exists(globalVariables.image_detection_path):
-        os.makedirs(globalVariables.image_detection_path)

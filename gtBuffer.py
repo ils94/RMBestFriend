@@ -13,8 +13,6 @@ def gt_buffer_countdown():
         if globalVariables.gt_buffer:
             count = count - 1
 
-            print(f"GT Timer: {count}")
-
             if count <= 0:
                 key = loadJson.read_data().get(globalVariables.gt_key, "")
 

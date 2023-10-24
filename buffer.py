@@ -13,8 +13,6 @@ def buffer_countdown():
         if globalVariables.buffer:
             count = count - 1
 
-            print(f"Buffer Timer: {count}")
-
             if count <= 0:
                 keys = loadJson.read_data().get(globalVariables.buffer_hotkeys, "").split(",")
 

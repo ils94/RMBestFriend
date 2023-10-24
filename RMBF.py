@@ -11,6 +11,7 @@ import startThreads
 import detectLowHPLoop
 import buffer
 import gtBuffer
+
 rect_color = "#ffcccb"
 
 
@@ -24,8 +25,10 @@ def validate_input_buffer_timer(char):
 def activate_deactivate_hp_detection():
     if globalVariables.hp_detection:
         globalVariables.hp_detection = False
+        label1.config(text="HP Detection: OFF")
     else:
         globalVariables.hp_detection = True
+        label1.config(text="HP Detection: ON")
 
         startThreads.start_thread(lambda: detectLowHPLoop.start_detecting())
 
@@ -33,8 +36,10 @@ def activate_deactivate_hp_detection():
 def activate_deactivate_buffer():
     if globalVariables.buffer:
         globalVariables.buffer = False
+        label2.config(text="Buffer: OFF")
     else:
         globalVariables.buffer = True
+        label2.config(text="Buffer: ON")
 
         startThreads.start_thread(lambda: buffer.buffer_countdown())
 
@@ -42,8 +47,10 @@ def activate_deactivate_buffer():
 def activate_deactivate_gt_buffer():
     if globalVariables.gt_buffer:
         globalVariables.gt_buffer = False
+        label3.config(text="GT Buffer: OFF")
     else:
         globalVariables.gt_buffer = True
+        label3.config(text="GT Buffer: ON")
 
         startThreads.start_thread(lambda: gtBuffer.gt_buffer_countdown())
 
@@ -114,9 +121,11 @@ def keys_setup_window():
     x = 250
     y = 570
 
-    top_level.title("Keys setup")
+    top_level.title("Keys Setup")
     top_level.geometry(f"{x}x{y}")
     top_level.attributes("-topmost", True)
+    top_level.minsize(x, y)
+    top_level.iconbitmap("icon.ico")
 
     # Create a horizontal separator
     separator = ttk.Separator(top_level, orient='horizontal')
@@ -130,7 +139,8 @@ def keys_setup_window():
     frame_checkbutton.pack(fill=tk.BOTH)
 
     # Create a checkbox widget
-    checkbox = tk.Checkbutton(frame_checkbutton, text="Is playing on Firefox?", variable=checkbox_var, command=checkbox_state)
+    checkbox = tk.Checkbutton(frame_checkbutton, text="Is Playing on FireFox?", variable=checkbox_var,
+                              command=checkbox_state)
     checkbox.pack(side=tk.LEFT)
 
     separator.pack(fill='x', pady=5)
@@ -141,7 +151,7 @@ def keys_setup_window():
     label1.pack(fill=tk.BOTH, padx=5, pady=5)
     entry1.pack(fill=tk.BOTH, padx=5, pady=5)
 
-    label2 = tk.Label(top_level, text="Activate/Deactivate Hotkey")
+    label2 = tk.Label(top_level, text="Key to Turn ON/OFF HP Detection")
     label2.pack(fill=tk.BOTH, padx=5, pady=5)
     entry2 = tk.Entry(top_level)
     entry2.pack(fill=tk.BOTH, padx=5, pady=5)
@@ -151,7 +161,7 @@ def keys_setup_window():
     entry3 = tk.Entry(top_level)
     entry3.pack(fill=tk.BOTH, padx=5, pady=5)
 
-    label4 = tk.Label(top_level, text="Key to Activate/Deactivate Buffer")
+    label4 = tk.Label(top_level, text="Key to Turn ON/OFF Buffer")
     label4.pack(fill=tk.BOTH, padx=5, pady=5)
     entry4 = tk.Entry(top_level)
     entry4.pack(fill=tk.BOTH, padx=5, pady=5)
@@ -168,7 +178,7 @@ def keys_setup_window():
     entry6 = tk.Entry(top_level)
     entry6.pack(fill=tk.BOTH, padx=5, pady=5)
 
-    label7 = tk.Label(top_level, text="Key to Activate/Deactivate GT Buffer")
+    label7 = tk.Label(top_level, text="Key to Turn ON/OFF GT Buffer")
     label7.pack(fill=tk.BOTH, padx=5, pady=5)
     entry7 = tk.Entry(top_level)
     entry7.pack(fill=tk.BOTH, padx=5, pady=5)
@@ -264,9 +274,26 @@ def on_release(event):
 
 root = tk.Tk()
 root.title("RM Best Friend")
-root.attributes("-alpha", 0.5)
+root.attributes("-alpha", 0.75)
 root.attributes("-topmost", True)
+root.iconbitmap("icon.ico")
 root.state("zoomed")
+
+frame = tk.Frame(root)
+frame.pack(side=tk.LEFT, fill=tk.Y)
+
+# Define a bold font
+bold_font = ("Arial", 12, "bold")
+
+# Create three labels
+label1 = tk.Label(frame, text="HP Detection: -", width=15, font=bold_font, anchor="w")
+label2 = tk.Label(frame, text="Buffer: -", width=15, font=bold_font, anchor="w")
+label3 = tk.Label(frame, text="GT Buffer: -", width=15, font=bold_font, anchor="w")
+
+# Pack the labels to display them in the window
+label1.pack(side=tk.TOP)
+label2.pack(side=tk.TOP)
+label3.pack(side=tk.TOP)
 
 menu_bar = Menu(root)
 root.config(menu=menu_bar)
