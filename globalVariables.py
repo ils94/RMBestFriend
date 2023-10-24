@@ -1,6 +1,7 @@
 from pathlib import Path
 
 hp_detection = False
+pause_heal = False
 buffer = False
 gt_buffer = False
 
@@ -8,6 +9,8 @@ start_x = None
 start_y = None
 end_x = None
 end_y = None
+
+is_using_firefox = False
 
 heal_hotkey = "heal_hotkey"
 activate_hotkey_heal = "activate_hotkey_heal"

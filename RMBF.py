@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import Menu, messagebox
+from tkinter import Menu, messagebox, ttk
 
 import keyboard
 
@@ -100,18 +100,41 @@ def keys_setup_window():
         with open(globalVariables.config_path + "keys_config.json", "w") as json_file:
             json.dump(data, json_file)
 
+    def checkbox_state():
+        if checkbox_var.get() == 1:
+            globalVariables.is_using_firefox = True
+        else:
+            globalVariables.is_using_firefox = False
+
+        print(globalVariables.is_using_firefox)
+
     top_level = tk.Toplevel(root)  # Create a new top-level window
 
     # Add widgets and configure the new top-level window as needed
 
     x = 250
-    y = 525
+    y = 570
 
     top_level.title("Keys setup")
     top_level.geometry(f"{x}x{y}")
     top_level.attributes("-topmost", True)
 
+    # Create a horizontal separator
+    separator = ttk.Separator(top_level, orient='horizontal')
+
     validation_timers = top_level.register(validate_input_buffer_timer)
+
+    # Create a variable to store the checkbox state
+    checkbox_var = tk.IntVar()
+
+    frame_checkbutton = tk.Frame(top_level)
+    frame_checkbutton.pack(fill=tk.BOTH)
+
+    # Create a checkbox widget
+    checkbox = tk.Checkbutton(frame_checkbutton, text="Is playing on Firefox?", variable=checkbox_var, command=checkbox_state)
+    checkbox.pack(side=tk.LEFT)
+
+    separator.pack(fill='x', pady=5)
 
     # Create Entry widgets for input
     label1 = tk.Label(top_level, text="Heal Hotkey")
@@ -161,8 +184,11 @@ def keys_setup_window():
     frame = tk.Frame(top_level)
     frame.pack(fill=tk.BOTH)
 
+    # Define a bold font
+    bold_font = ("Arial", 10, "bold")
+
     # Create a button to save data
-    button = tk.Button(frame, text="Save", width=10, height=2, command=save_data)
+    button = tk.Button(frame, text="Save", width=10, height=2, font=bold_font, command=save_data)
     button.pack(side=tk.LEFT, padx=5, pady=5)
 
     data = loadJson.read_data()
@@ -184,6 +210,11 @@ def keys_setup_window():
     entry7.insert(0, data.get(globalVariables.activate_hotkey_gt, ""))
     entry8.delete(0, tk.END)
     entry8.insert(0, data.get(globalVariables.gt_timer, ""))
+
+    if globalVariables.is_using_firefox:
+        checkbox_var.set(1)
+    else:
+        checkbox_var.set(0)
 
     # Center the window on the screen with a minimum size
     center_window(top_level, x, y)  # Adjust the minimum size as needed
