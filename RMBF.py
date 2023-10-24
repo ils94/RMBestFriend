@@ -11,7 +11,6 @@ import startThreads
 import detectLowHPLoop
 import buffer
 import gtBuffer
-
 rect_color = "#ffcccb"
 
 

@@ -21,4 +21,4 @@ activate_hotkey_gt = "activate_hotkey_gt"
 gt_timer = "gt_timer"
 
 config_path = str(Path.home() / 'Documents') + r"/RMBestFriend/Configs/"
-image_detection_path = str(Path.home() / 'Documents') + r"/RMBestFriend/Detection"
+image_detection_path = "img/"

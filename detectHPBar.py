@@ -42,6 +42,7 @@ def is_hp_low():
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
 
         if max_val > 0.7:
+            print(image_files)
             return True
 
 
