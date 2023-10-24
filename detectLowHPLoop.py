@@ -11,17 +11,14 @@ def start_detecting():
         try:
             if detectHPBar.is_hp_low():
                 if globalVariables.hp_detection:
-                    if not globalVariables.pause_heal:
-                        key = loadJson.read_data().get(globalVariables.heal_hotkey, "")
+                    key = loadJson.read_data().get(globalVariables.heal_hotkey, "")
 
-                        if globalVariables.is_using_firefox:
-                            windowsAPI.windows_api(key)
-                        else:
-                            keyboard.press_and_release(key)
+                    if globalVariables.is_using_firefox:
+                        windowsAPI.windows_api(key)
+                    else:
+                        keyboard.press_and_release(key)
 
-                    time.sleep(1)
-                else:
-                    break
+                time.sleep(1.5)
 
         except Exception as e:
             print(e)

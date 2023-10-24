@@ -1,7 +1,6 @@
 from pathlib import Path
 
 hp_detection = False
-pause_heal = False
 buffer = False
 gt_buffer = False
 

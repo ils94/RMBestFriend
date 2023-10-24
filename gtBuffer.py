@@ -13,10 +13,10 @@ def gt_buffer_countdown():
         if globalVariables.gt_buffer:
             count = count - 1
 
+            print(f"GT Timer: {count}")
+
             if count <= 0:
                 key = loadJson.read_data().get(globalVariables.gt_key, "")
-
-                globalVariables.pause_heal = True
 
                 if globalVariables.gt_buffer:
                     if globalVariables.is_using_firefox:
@@ -26,9 +26,6 @@ def gt_buffer_countdown():
 
                     count = int(loadJson.read_data().get(globalVariables.gt_timer, ""))
 
-                    globalVariables.pause_heal = False
-
             time.sleep(1)
         else:
-            globalVariables.pause_heal = False
             break
