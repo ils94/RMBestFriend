@@ -32,7 +32,7 @@ After you setup everything, you can minimize the overlay and close the Keys Setu
 
 # Notes
 
-Go to a mob and hit it enough to leave it at low health, then keep dragging the rectangle where it's HP bar is until the program detects the enemy HP bar. It not hard to setup, make the rectangle a bit bigger to give the program enough coordinates to perform the pixel recognition.
+Go to a mob and hit it enough to leave it at low health, then press the hotkey you setup to activate the HP Detection, then, keep dragging a rectangle where the HP bar is and see if your RM starts healing, if it does, it means the setup is ready!
 
 # IT BUGGED!
 
