@@ -8,6 +8,8 @@ Playing on FireFox allow this tool to send the keystrokes even if FireFox is not
 
 *The FireFox window needs to still be visible on your screen, otherwise it won't be able to detect your partner's hp bar therefor it won't heal!
 
+Download link: https://github.com/ils94/RMBestFriend/releases/download/release/RMBF.zip
+
 # How to use
 
 Open your game and search for something to target, be it a player or a mob.
